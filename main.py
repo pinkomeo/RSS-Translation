@@ -85,6 +85,8 @@ def tran(sec):
     # move style
     html_doc=html_doc.replace('<?', '</s')
     html_doc=html_doc.replace('?>', '/>')
+    html_doc=html_doc.replace('<link>', '<link888>')
+    html_doc=html_doc.replace('</link>', '</link888>')
     
     soup = BeautifulSoup(html_doc, 'html.parser')
     items=soup.find_all('item')
@@ -107,6 +109,8 @@ def tran(sec):
         c=_text.translatedText
         
         c=c.replace('stitle>', 'title>')
+        c=c.replace('<link888>', '<link>')
+        c=c.replace('</link888>', '</link>')
         c=c.replace('<span translate="no">', '')
         c=c.replace('</span></pubdate>', '</pubDate>') # 对于ttrss需要为pubDate才会识别正确
         c=c.replace('&gt','>') # &gt 会影响识别
